@@ -21,6 +21,9 @@ mongoose.connect(config.MOGNO_URI)
     logger.error('error connecting to MongoDB:', error.message);
   });
 
+app.use(cors());
+app.use(express.json());
+
 // @ ROUTES
 
 const blogRoutes = require('./controllers/blogs');
@@ -29,8 +32,5 @@ app.use('/api/blogs', blogRoutes);
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);
-
-app.use(cors());
-app.use(express.json());
 
 module.exports = app;

@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 const blogsRouter = require('express').Router();
 const Blog = require('../models/Blog');
 
