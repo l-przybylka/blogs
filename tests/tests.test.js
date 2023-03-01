@@ -101,7 +101,7 @@ describe('Find blog with the most number of likes', () => {
     }
   ]
   
-  const result = listHelper.theMosttLikes(listWithOneBlog)
+  const result = listHelper.theMostLikes(listWithOneBlog)
   expect(result).toEqual(listWithOneBlog[0])
 
  })
