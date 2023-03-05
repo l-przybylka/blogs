@@ -9,6 +9,9 @@ const middleware = require('./utils/middleware');
 const logger = require('./utils/logger');
 
 const app = express();
+app.use(cors());
+app.use(express.json());
+
 mongoose.set('strictQuery', false);
 
 logger.info('connecting to', config.MOGNO_URI);
@@ -21,8 +24,7 @@ mongoose.connect(config.MOGNO_URI)
     logger.error('error connecting to MongoDB:', error.message);
   });
 
-app.use(cors());
-app.use(express.json());
+
 
 // @ ROUTES
 

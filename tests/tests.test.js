@@ -89,10 +89,7 @@ describe('Total likes of the array of blogs', () => {
 
 
 describe('Find blog with the most number of likes', () => {
-  // test with 1 obj (just likes to return)
-  // test with 3 obj ()
-  // test with 3 obj 2 the same amount of likes ()
-  // proper test
+
   test('Test with only one blog in the list', () => {
     const listWithOneBlog = [
       {
@@ -254,6 +251,10 @@ describe('Returns an author who has written the most blogs', () => {
         __v: 0
       }
     ]
+
+    // array of objects, each object represents a blog entry with it's title,author and number of likes
+    // return an object with the author's name and the number of blogs written by them e.g. author: "Person", blogs: 3
+    // loop over the array to create a new array of author's names, then count how many times names are repeated in the array and add them to the author object
 
     const result = listHelper.theMostLikes(listWithSixBlogs)
     expect(result).toEqual({
