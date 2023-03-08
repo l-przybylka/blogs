@@ -256,10 +256,11 @@ describe('Returns an author who has written the most blogs', () => {
     // return an object with the author's name and the number of blogs written by them e.g. author: "Person", blogs: 3
     // loop over the array to create a new array of author's names, then count how many times names are repeated in the array and add them to the author object
 
-    const result = listHelper.theMostLikes(listWithSixBlogs)
+    const result = listHelper.theMostActiveAuthor(listWithSixBlogs)
     expect(result).toEqual({
       author: "Robert C. Martin",
       blogs: 3
     })
+    
   })
 })
