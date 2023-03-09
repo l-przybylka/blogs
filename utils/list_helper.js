@@ -21,23 +21,31 @@ const theMostLikes = blogs => {
 }
 
 
-
-const theMostActiveAuthor = blogs => {
+const authorsName = obj => obj.author
+const authorWithTheMostBlogs = blogs => {
     // helper function for iterating in lodash library
-    const authorsName = obj => obj.author
+
     // using lodash lib. we go over provided array using iteree function authorsName to count how many times each of the author's name appears in the array
     const blogsPerAuthor = _.countBy(blogs, authorsName)
     // turn object into an array so we can sort by the highest number
-    const authorWithTheMostBlogs = Object.entries(blogsPerAuthor).sort((a,b) => b[1] - a[1])[0]
+    const authorWithTheMostBlogs = Object.entries(blogsPerAuthor).sort((a, b) => b[1] - a[1])[0]
     // we create an object to be returned 
-    return  {
+    return {
         author: authorWithTheMostBlogs[0],
         blogs: authorWithTheMostBlogs[1]
-      }
+    }
+}
+
+const authorWithTheMostLikes = blogs => {
+    const authorsLikes = obj => obj.likes
+    const postsGroupedByAuthor = _.groupBy(blogs, authorsName)
+    // iterate the above: first pass the name of the author and then iterate to add likes 
+    _.forEach(postsGroupedByAuthor, (object) => console.log(_.countBy(object, authorsLikes)))
 }
 
 module.exports = {
     totalLikes,
     theMostLikes,
-    theMostActiveAuthor
+    authorWithTheMostBlogs,
+    authorWithTheMostLikes
 };
