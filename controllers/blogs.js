@@ -8,6 +8,17 @@ blogsRouter.get('/', async (request, response) => {
     response.json(blogs);
 });
 
+blogsRouter.get('/:id', async (request, response) => {
+    const blog = await Blog.findById(request.params.id)
+
+    if(blog) {
+        response.json(blog);
+    } else {
+        response.status(404).end
+    }
+});
+
+
 blogsRouter.post('/', async (request, response, next) => {
     const blog = new Blog(request.body);
 
@@ -21,5 +32,6 @@ blogsRouter.post('/', async (request, response, next) => {
 
 
 })
+
 
 module.exports = blogsRouter;
