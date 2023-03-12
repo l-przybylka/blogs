@@ -11,7 +11,7 @@ blogsRouter.get('/', async (request, response) => {
 blogsRouter.get('/:id', async (request, response) => {
     const blog = await Blog.findById(request.params.id)
 
-    if(blog) {
+    if (blog) {
         response.json(blog);
     } else {
         response.status(404).end
@@ -21,15 +21,20 @@ blogsRouter.get('/:id', async (request, response) => {
 
 blogsRouter.post('/', async (request, response, next) => {
     const blog = new Blog(request.body);
+    // if likes don't exist default to 0 
 
+    const newBlog = {
+        title: blog.title,
+        author: blog.author,
+        url: blog.url,
+        likes: blog.likes || 0
+    }
     try {
-        const savedBlog = await blog.save()
-        console.log(savedBlog);
-        response.status(201).json(savedBlog)        
+        const savedBlog = await newBlog.save()
+        response.status(201).json(savedBlog)
     } catch (error) {
         next(error)
     }
-
 
 })
 

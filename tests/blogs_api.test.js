@@ -49,8 +49,17 @@ test('Successful blog entry creation', async () => {
     logger.info('after new blog', afterPostResponse.body.length)
 
     expect(afterPostResponse.body).toHaveLength(initialBlogs.length + 1)
-
+    expect(afterPostResponse.body[afterPostResponse.body.length - 1].author).toEqual("Testing Author")
 })
+
+test('Blog with no likes, should default to 0 likes', async () => {
+    const blogWithNoLikes = {
+        "title": "Likes should default to 0",
+        "author": "The Greatest Author of All Times",
+        "url": "www.indeedisgood.com"
+    }
+})
+
 
 
 
