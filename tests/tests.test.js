@@ -6,7 +6,7 @@ describe('Total likes of the array of blogs', () => {
     const listWithOneBlog = [
       {
         author: "Lukasz",
-        likes: 5
+        likes: 5,
       }
     ]
 
